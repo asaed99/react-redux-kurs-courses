@@ -47,7 +47,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            React Redux Kurs
+            React Redux Class Setup
           </a>
         </span>
       </header>
