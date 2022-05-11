@@ -1,0 +1,47 @@
+CLASS 1-4
+Basic principles of Redux:
+
+Redux is based on three pricniples. State, Action(Dispatch), Reducer(function)
+Redux saves every stage of statechanges in a single JavaScript Object.
+These Changes which are represented in a Js Object are called State or StateTree.
+The State is immutable, every change that is made is a new Js Object which contains
+changes that has been made and keeps the non changed attributes from the previous
+track since every step is a new object and redux can take track of all the changes made.
+
+State Tree is readonly which means it can’t be mutated. For every desired change
+you need to DISPATCH an ACTION.
+Action is a JS Obj which must contain a (type: „STRING“). It’s a representation of the
+State in the App.
+When an Action is called (dispatched) the type of the action changes that represents
+a State.
+
+PURE and IMPURE Functions
+Redux uses Pure functions to not mutate the State.
+Pure Functions are those that don't change the external values:
+
+const x = 10
+const function add(x){
+    return x++
+}
+add(10)
+add(10)
+// Console.log(x): 11
+// Console.log(x): 11
+
+While the impure function changes the value everytime it's called:
+
+const x = 10
+const function add(){
+    x++
+}
+add()
+add()
+//Console.log(x): 11
+//Console.log(x): 12
+
+To dispatch an Action, a function is required. This function uses
+the previous state and dispatches the action which is triggered and
+creates a new state with that function. This function is called the reducer.
+Its important to write the reducer function as pure function so the 
+external values (previous state) doesn't mutate but new values
+are created (new state).
