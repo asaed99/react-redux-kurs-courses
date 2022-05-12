@@ -1,0 +1,40 @@
+Since Redux always create an Array of JavaScript Objects instead of mutating
+the orignal Array, it is not possible for Redux to compile mutating Methods.
+The non mutation can create a new copy of the old array which is needed to keep track
+of all state changes.
+
+const addCounter = () => {
+    list.push(0) 
+    return list
+}
+const testAddCounter = () => {
+    const listBefore = [];
+    const listAfter = [0]
+}
+// .push is a mutatting Method which won't bring the desired result.
+const removeCounter = (list, index) => {
+    list.splice(index, 1)
+    return list
+}
+// also .splice is a mutating Method which will also won't work in Redux.
+
+The second option is to use non mutating Methods. Like Slice or Concat.
+
+const addCounter = () => {
+    return list.concat[0]
+}
+const removeCounter = () => {
+    return list.slice(0, index).concat(list.slice(index + 1))
+}
+// Slice different than splice and is "slices" a part of the Array
+(for exp.: Array Index 0 to Array Index 10 = 11 Array Elements from 0-11.)
+But a newer and clearer way of writing the code is to use the spreadoperator
+which concise way which is much narrower and precise.
+const removeCounter = () => {
+    [...list.slice(o, index), ...list.slice(index + 1)]
+} 
+const incrementCounter = (list, index) => {
+    return [...list.slice(0, index), // Left part of the Array
+     list[index] + 1, // New Item
+      ...list.slice(index + 1)] // Right part of the orignal Array
+}
